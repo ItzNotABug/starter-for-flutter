@@ -15,7 +15,7 @@ class ConnectionLine extends StatelessWidget {
     return SizedBox(
       width: context.widthFactor(
         mobileFactor: 0.25,
-        largeScreenFactor: 0.25,
+        largeScreenFactor: 0.125,
       ),
       child: Flex(
         direction: Axis.horizontal,
