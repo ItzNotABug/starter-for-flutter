@@ -242,15 +242,6 @@ class ProjectSection extends StatelessWidget {
                   ProjectRow(title: "Project ID", value: projectInfo.projectId),
                 ],
               ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ProjectRow(
-                      title: "Project Name", value: projectInfo.projectName),
-                  ProjectRow(title: "Version", value: projectInfo.version),
-                ],
-              ),
             ],
           ),
         ),
@@ -500,7 +491,7 @@ class LogsTableRow extends StatelessWidget {
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: Text(
-              response.substring(0, 50),
+              response.length > 50 ? response.substring(0, 50) : response,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(

@@ -2,6 +2,30 @@ import 'package:appwrite_flutter_starter_kit/utils/extensions/build_context.dart
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+const cardWidgets = [
+  GeneralInfoCard(
+    title: "Edit your app",
+    link: null,
+    subtitle: HighlightedText(),
+  ),
+  GeneralInfoCard(
+    title: "Head to Appwrite Cloud",
+    link: "https://cloud.appwrite.io",
+    subtitle: Text(
+      "Start managing your project from the Appwrite console",
+      style: TextStyle(fontSize: 14, color: Color(0xFF56565C)),
+    ),
+  ),
+  GeneralInfoCard(
+    title: "Explore docs",
+    link: "https://appwrite.io/docs",
+    subtitle: Text(
+      "Discover the full power of Appwrite by diving into our documentation",
+      style: TextStyle(fontSize: 14, color: Color(0xFF56565C)),
+    ),
+  ),
+];
+
 /// A widget that contains a list of informational cards displayed vertically.
 class GettingStartedCards extends StatelessWidget {
   const GettingStartedCards({super.key});
@@ -9,39 +33,28 @@ class GettingStartedCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          GeneralInfoCard(
-            title: "Edit your app",
-            link: null,
-            subtitle: const HighlightedText(),
-          ),
-          GeneralInfoCard(
-            title: "Head to Appwrite Cloud",
-            link: "https://cloud.appwrite.io",
-            subtitle: const Text(
-              "Start managing your project from the Appwrite console",
-              style: TextStyle(
-                fontSize: 14,
-                color: Color(0xFF56565C),
-              ),
+      padding: const EdgeInsets.all(16.0),
+      child: context.isLargeScreen
+          ? Wrap(
+              spacing: 16,
+              runSpacing: 16,
+              alignment: WrapAlignment.center,
+              children: cardWidgets
+                  .map((card) => SizedBox(
+                        width: 350,
+                        child: card,
+                      ))
+                  .toList(),
+            )
+          : Column(
+              mainAxisSize: MainAxisSize.min,
+              children: cardWidgets
+                  .map((card) => Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: card,
+                      ))
+                  .toList(),
             ),
-          ),
-          GeneralInfoCard(
-            title: "Explore docs",
-            link: "https://appwrite.io/docs",
-            subtitle: const Text(
-              "Discover the full power of Appwrite by diving into our documentation",
-              style: TextStyle(
-                fontSize: 14,
-                color: Color(0xFF56565C),
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

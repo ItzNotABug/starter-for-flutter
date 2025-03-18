@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppwriteIcon extends StatelessWidget {
-  final double size; // Desired width, height scales accordingly
+  final double size;
   final Color color;
 
   const AppwriteIcon({

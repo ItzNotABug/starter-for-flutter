@@ -54,7 +54,7 @@ class _AppwriteStarterKit extends State<AppwriteStarterKit> {
             children: [
               SingleChildScrollView(
                 child: Column(
-                  spacing: 16,
+                  spacing: context.isLargeScreen ? 64 : 32,
                   children: [
                     TopPlatformView(status: _status),
                     ConnectionStatusView(
